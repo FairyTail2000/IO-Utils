@@ -45,13 +45,21 @@ public class IO {
 	}
 
 	/**
+	 * Liest eine Zeile aus der Konsole ein
+	 * @return Die eingegebene Zeile
+	 */
+	public static String readln () {
+		return server.readLine();
+	}
+	
+	/**
 	 * Liest einen double (Kommazahl) ein
 	 * 
 	 * @param message Die Nachricht die ausgegeben werden soll
 	 * @return Den eingegebenen Wert
 	 */
 	public static double readDouble(String message) {
-		server.output().print(message);
+		print(message);
 		return readDouble();
 	}
 
@@ -66,7 +74,7 @@ public class IO {
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
 			if (s.replaceAll("\\s*", "").isEmpty()) {
-				server.error("Bitte eine Kommazahl eingeben!");
+				error("Bitte eine Kommazahl eingeben!");
 				continue;
 			}
 
@@ -74,7 +82,7 @@ public class IO {
 				ret = Double.parseDouble(s);
 				valid = true;
 			} catch (NumberFormatException e) {
-				server.error("Bitte eine Kommazahl eingeben!");
+				error("Bitte eine Kommazahl eingeben!");
 				continue;
 			}
 		}
@@ -88,7 +96,7 @@ public class IO {
 	 * @return Den eingegebenen Wert
 	 */
 	public static float readFloat(String message) {
-		server.output().print(message);
+		print(message);
 		return readFloat();
 	}
 
@@ -103,7 +111,7 @@ public class IO {
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
 			if (s.replaceAll("\\s*", "").isEmpty()) {
-				server.error("Bitte eine Kommazahl eingeben!");
+				error("Bitte eine Kommazahl eingeben!");
 				continue;
 			}
 
@@ -125,7 +133,7 @@ public class IO {
 	 * @return Den eingegenden Wert
 	 */
 	public static byte readByte(String message) {
-		server.output().print(message);
+		print(message);
 		return readByte();
 	}
 
@@ -140,7 +148,7 @@ public class IO {
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
 			if (s.replaceAll("\\s*", "").isEmpty()) {
-				server.error("Bitte ein Ganzzahl eingeben!");
+				error("Bitte ein Ganzzahl eingeben!");
 				continue;
 			}
 
@@ -148,7 +156,7 @@ public class IO {
 				ret = Byte.parseByte(s);
 				valid = true;
 			} catch (NumberFormatException e) {
-				server.error("Bitte ein Ganzzahl eingeben!");
+				error("Bitte ein Ganzzahl eingeben!");
 				continue;
 			}
 		}
@@ -162,7 +170,7 @@ public class IO {
 	 * @return Den eingegenden Wert
 	 */
 	public static long readLong(String message) {
-		server.output().print(message);
+		print(message);
 		return readLong();
 	}
 
@@ -177,7 +185,7 @@ public class IO {
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
 			if (s.replaceAll("\\s*", "").isEmpty()) {
-				server.error("Bitte eine Ganzzahl eingeben!");
+				error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
 
@@ -185,7 +193,7 @@ public class IO {
 				ret = Long.parseLong(s);
 				valid = true;
 			} catch (NumberFormatException e) {
-				server.error("Bitte eine Ganzzahl eingeben!");
+				error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
 		}
@@ -199,7 +207,7 @@ public class IO {
 	 * @return Den eingegenden Wert
 	 */
 	public static short readShort(String message) {
-		server.output().print(message);
+		print(message);
 		return readShort();
 	}
 
@@ -214,7 +222,7 @@ public class IO {
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
 			if (s.replaceAll("\\s*", "").isEmpty()) {
-				server.error("Bitte eine Ganzzahl eingeben!");
+				error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
 
@@ -222,7 +230,7 @@ public class IO {
 				ret = Short.parseShort(s);
 				valid = true;
 			} catch (NumberFormatException e) {
-				server.error("Bitte eine Ganzzahl eingeben!");
+				error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
 		}
@@ -236,7 +244,7 @@ public class IO {
 	 * @return Den eingegenden Wert
 	 */
 	public static int readInt(String message) {
-		server.output().print(message);
+		print(message);
 		return readInt();
 	}
 
@@ -251,7 +259,7 @@ public class IO {
 		while (!valid) {
 			String s = server.readLine();
 			if (s.replaceAll("\\s*", "").isEmpty()) {
-				server.error("Bitte eine Ganzzahl eingeben!");
+				error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
 
@@ -259,7 +267,7 @@ public class IO {
 				ret = Integer.parseInt(s);
 				valid = true;
 			} catch (NumberFormatException e) {
-				server.error("Bitte eine Ganzzahl eingeben!");
+				error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
 		}
@@ -286,7 +294,7 @@ public class IO {
 	 * @return Den eingegenden Wert
 	 */
 	public static boolean readBoolean(String message) {
-		server.output().print(message);
+		print(message);
 		return readBoolean();
 	}
 
@@ -326,7 +334,7 @@ public class IO {
 				ret = false;
 				break;
 			default:
-				server.error("Bitte einen Wahrheitswert eingeben!");
+				error("Bitte einen Wahrheitswert eingeben!");
 				continue;
 			}
 		}
@@ -346,7 +354,7 @@ public class IO {
 	 * @return Das gefüllte Array
 	 */
 	public static int[] readIntArray(String message, boolean mehrzeilig) {
-		server.output().println(message);
+		println(message);
 		return readIntArray(mehrzeilig);
 	}
 
@@ -366,7 +374,7 @@ public class IO {
 				try {
 					ints.add(Integer.valueOf(line));
 				} catch (NumberFormatException e) {
-					server.error("Bitte eine Ganzzahl eingeben");
+					error("Bitte eine Ganzzahl eingeben");
 				}
 			}
 		} else {
@@ -379,8 +387,8 @@ public class IO {
 					try {
 						ints.add(Integer.valueOf(part));
 					} catch (NumberFormatException e) {
-						server.error("Bitte Ganzzahlen kommasepariert oder mit Leerzeichen separiert eingeben");
-						server.error("Bitte erneut eingeben: ");
+						error("Bitte Ganzzahlen kommasepariert oder mit Leerzeichen separiert eingeben");
+						error("Bitte erneut eingeben: ");
 						break;
 					}
 				}
@@ -397,36 +405,51 @@ public class IO {
 		return arr;
 	}
 	
+	/**
+	 * Liest eine Datei und gibt den Inhalt Zeilenweise in einem String array zurück
+	 * @param target Die Zieldatei
+	 * @return Den Inhalt der Datei, falls nicht existent null
+	 */
 	public static String[] readFile (String target) {
 		File file = new File(target);
 		if (!file.exists()) {
-			server.error("Fehler: Datei nicht gefunden");
+			error("Fehler: Datei nicht gefunden");
 			return null;
 		}
 		return readFile(file);
 	}
 	
+	/**
+	 * Liest eine Datei und gibt den Inhalt Zeilenweise in einem String array zurück
+	 * @param target Die Zieldatei
+	 * @return Den Inhalt der Datei, falls nicht existent null
+	 */
 	public static String[] readFile (File target) {
 		if (!target.exists()) {
-			server.error("Fehler: Datei nicht gefunden");
+			error("Fehler: Datei nicht gefunden");
 			return null;
 		}
 		String[] ret = null;
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(target))) {
+			String line;
+			List<String> lines = new ArrayList<>();
+			while ((line = reader.readLine()) != null) {
+				lines.add(line);
+			}
 			
+			ret = lines.toArray(new String[0]);
 		} catch (FileNotFoundException e) {
-			server.error("Fehler: Datei nicht gefunden");
+			error("Fehler: Datei nicht gefunden");
 			return null;
 		} catch (IOException e) {
-			server.error("Input/Output Exception, Details unten");
+			error("Input/Output Exception, Details unten");
 			e.printStackTrace();
 			return null;
 		}
-		
-		
-		
 		return ret;
 	}
+	
+	
 
 }
