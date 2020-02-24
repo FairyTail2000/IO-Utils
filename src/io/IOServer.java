@@ -9,6 +9,12 @@ class IOServer {
 	private Scanner scanner;
 	private PrintStream stream, error_stream;
 	
+	/**
+	 * 
+	 * @param input Der InputStream zum einlesen von Daten
+	 * @param output Der Stream wo Daten ausgegeben werden
+	 * @param error Der Stream wo Fehler ausgegeben werden
+	 */
 	public IOServer (InputStream input, PrintStream output, PrintStream error) {
 		this.scanner = new Scanner(input);
 		this.stream = output;
