@@ -1,5 +1,9 @@
 package io;
 
+/**
+ * Diese Klasse enthält Methoden zur Ein- und Ausgabe im Terminal
+ * @author rafael
+ */
 public class IO {
 	
 	private static IOServer server = new IOServer(System.in, System.out, System.err);
@@ -31,13 +35,17 @@ public class IO {
 	/**
 	 * Liest einen double (Kommazahl) ein
 	 * @param message Die Nachricht die ausgegeben werden soll
-	 * @return
+	 * @return Den eingegebenen Wert
 	 */
 	public static double readDouble (String message) {
 		server.output().print(message);
 		return readDouble();
 	}
 	
+	/**
+	 * Liest einen double (Kommazahl) ein
+	 * @return Den eingegebenen Wert
+	 */
 	public static double readDouble () {
 		double ret = 0;
 		boolean valid = false;
@@ -59,11 +67,20 @@ public class IO {
 		return ret;
 	}
 	
+	/**
+	 * Liest einen float (Kommazahl) ein
+	 * @param message Die Nachricht die ausgegeben werden soll
+	 * @return Den eingegebenen Wert
+	 */
 	public static float readFloat (String message) {
 		server.output().print(message);
 		return readFloat();
 	}
 	
+	/**
+	 * Liest einen float (Kommazahl) ein
+	 * @return Den eingegebenen Wert
+	 */
 	public static float readFloat () {
 		float ret = 0;
 		boolean valid = false;
@@ -85,11 +102,20 @@ public class IO {
 		return ret;
 	}
 	
+	/**
+	 * Liest ein Byte ein -127 - 127
+	 * @param message Die Nachricht die ausgegeben werden soll
+	 * @return Den eingegenden Wert
+	 */
 	public static byte readByte (String message) {
 		server.output().print(message);
 		return readByte();
 	}
 	
+	/**
+	 * Liest ein Byte ein -127 - 127
+	 * @return Den eingegenden Wert
+	 */
 	public static byte readByte () {
 		byte ret = 0;
 		boolean valid = false;
@@ -111,11 +137,20 @@ public class IO {
 		return ret;
 	}
 	
+	/**
+	 * Liest einen Long (-9223372036854775808 - 9223372036854775807) ein
+	 * @param message Die Nachricht die ausgegeben werden soll
+	 * @return Den eingegenden Wert
+	 */
 	public static long readLong (String message) {
 		server.output().print(message);
 		return readLong();
 	}
 	
+	/**
+	 * Liest einen Long (-9223372036854775808 - 9223372036854775807) ein
+	 * @return Den eingegenden Wert
+	 */
 	public static long readLong () {
 		long ret = 0;
 		boolean valid = false;
@@ -137,11 +172,20 @@ public class IO {
 		return ret;
 	}
 	
+	/**
+	 * Liest einen Short (-32768 - 32767) ein
+	 * @param message Die Nachricht die ausgegeben werden soll
+	 * @return Den eingegenden Wert
+	 */
 	public static short readShort (String message) {
 		server.output().print(message);
 		return readShort();
 	}
 	
+	/**
+	 * Liest einen Short (-32768 - 32767) ein
+	 * @return Den eingegenden Wert
+	 */
 	public static short readShort () {
 		short ret = 0;
 		boolean valid = false;
@@ -163,11 +207,20 @@ public class IO {
 		return ret;
 	}
 	
+	/**
+	 * Liest einen Integer (-2147483648 - 2147483647) ein
+	 * @param message Die Nachricht die ausgegeben werden soll
+	 * @return Den eingegenden Wert
+	 */
 	public static int readInt (String message) {
 		server.output().print(message);
 		return readInt();
 	}
 	
+	/**
+	 * Liest einen Integer (-2147483648 - 2147483647) ein
+	 * @return Den eingegenden Wert
+	 */
 	public static int readInt () {
 		int ret = 0;
 		boolean valid = false;
@@ -189,18 +242,55 @@ public class IO {
 		return ret;
 	}
 	
+	/**
+	 * Liest einen Wahrheitswert ein
+	 * Unterstützte Wahrheitswerte:
+	 * <ul>
+	 * <li>true</li>
+	 * <li>wahr</li>
+	 * <li>1</li>
+	 * <li>ja</li>
+	 * </ul>
+	 * Sowie die gegensätzlichen:
+	 * <ul>
+	 * <li>false</li>
+	 * <li>falsch</li>
+	 * <li>0</li>
+	 * <li>nein</li>
+	 * </ul>
+	 * @param message Die Nachricht die ausgegeben werden soll
+	 * @return Den eingegenden Wert
+	 */
 	public static boolean readBoolean (String message) {
 		server.output().print(message);
 		return readBoolean();
 	}
 	
+	/**
+	 * Liest einen Wahrheitswert ein
+	 * Unterstützte Wahrheitswerte:
+	 * <ul>
+	 * <li>true</li>
+	 * <li>wahr</li>
+	 * <li>1</li>
+	 * <li>ja</li>
+	 * </ul>
+	 * Sowie die gegensätzlichen:
+	 * <ul>
+	 * <li>false</li>
+	 * <li>falsch</li>
+	 * <li>0</li>
+	 * <li>nein</li>
+	 * </ul>
+	 * @return Den eingegenden Wert
+	 */
 	public static boolean readBoolean () {
 		boolean ret = false;
 		while (!ret) {
 			String s = server.readLine();
-			switch (s.toLowerCase()) {
+			switch (s.toLowerCase().strip()) {
 			case "true":
-			case "war":
+			case "wahr":
 			case "1":
 			case "ja":
 				ret = true;

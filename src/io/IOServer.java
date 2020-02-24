@@ -15,18 +15,32 @@ class IOServer {
 		this.error_stream = error;
 	}
 	
+	/**
+	 * @return Den globalen Konsolen leser
+	 */
 	public Scanner reader () {
 		return this.scanner;
 	}
 	
+	/**
+	 * Liest eine Zeile aus der Konsole ein
+	 * @return
+	 */
 	public String readLine () {
 		return this.scanner.nextLine();
 	}
 	
+	/**
+	 * @return Den Konsolen stream
+	 */
 	public PrintStream output () {
 		return this.stream;
 	}
 	
+	/**
+	 * Gibt einen Fehler aus
+	 * @param msg Den auszugebenen Fehler
+	 */
 	public <T> void error (T msg) {
 		error_stream.println(msg);
 		error_stream.flush();
