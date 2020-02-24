@@ -1,5 +1,10 @@
 package io;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +65,7 @@ public class IO {
 		boolean valid = false;
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
-			if (s.isBlank() || s.isEmpty()) {
+			if (s.replaceAll("\\s*", "").isEmpty()) {
 				server.error("Bitte eine Kommazahl eingeben!");
 				continue;
 			}
@@ -97,7 +102,7 @@ public class IO {
 		boolean valid = false;
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
-			if (s.isBlank() || s.isEmpty()) {
+			if (s.replaceAll("\\s*", "").isEmpty()) {
 				server.error("Bitte eine Kommazahl eingeben!");
 				continue;
 			}
@@ -134,7 +139,7 @@ public class IO {
 		boolean valid = false;
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
-			if (s.isBlank()) {
+			if (s.replaceAll("\\s*", "").isEmpty()) {
 				server.error("Bitte ein Ganzzahl eingeben!");
 				continue;
 			}
@@ -171,7 +176,7 @@ public class IO {
 		boolean valid = false;
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
-			if (s.isBlank() || s.isEmpty()) {
+			if (s.replaceAll("\\s*", "").isEmpty()) {
 				server.error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
@@ -208,7 +213,7 @@ public class IO {
 		boolean valid = false;
 		while (!valid) {
 			String s = server.readLine().replaceAll(",", ".");
-			if (s.isBlank() || s.isEmpty()) {
+			if (s.replaceAll("\\s*", "").isEmpty()) {
 				server.error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
@@ -245,7 +250,7 @@ public class IO {
 		boolean valid = false;
 		while (!valid) {
 			String s = server.readLine();
-			if (s.isBlank() || s.isEmpty()) {
+			if (s.replaceAll("\\s*", "").isEmpty()) {
 				server.error("Bitte eine Ganzzahl eingeben!");
 				continue;
 			}
@@ -307,7 +312,7 @@ public class IO {
 		boolean ret = false;
 		while (!ret) {
 			String s = server.readLine();
-			switch (s.toLowerCase().strip()) {
+			switch (s.toLowerCase().trim()) {
 			case "true":
 			case "wahr":
 			case "1":
@@ -357,7 +362,7 @@ public class IO {
 
 		if (mehrzeilig) {
 			String line = "";
-			while (!(line = server.readLine()).isBlank()) {
+			while (!(line = server.readLine()).replaceAll("\\s*", "").isEmpty()) {
 				try {
 					ints.add(Integer.valueOf(line));
 				} catch (NumberFormatException e) {
@@ -390,6 +395,38 @@ public class IO {
 		}
 
 		return arr;
+	}
+	
+	public static String[] readFile (String target) {
+		File file = new File(target);
+		if (!file.exists()) {
+			server.error("Fehler: Datei nicht gefunden");
+			return null;
+		}
+		return readFile(file);
+	}
+	
+	public static String[] readFile (File target) {
+		if (!target.exists()) {
+			server.error("Fehler: Datei nicht gefunden");
+			return null;
+		}
+		String[] ret = null;
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader(target))) {
+			
+		} catch (FileNotFoundException e) {
+			server.error("Fehler: Datei nicht gefunden");
+			return null;
+		} catch (IOException e) {
+			server.error("Input/Output Exception, Details unten");
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		
+		return ret;
 	}
 
 }
