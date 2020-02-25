@@ -1,5 +1,5 @@
 # IO-Utils
-Ein Library welches für die Nutzung an Schule konzipiert ist
+Ein Library welches für die Nutzung an Schulen konzipiert ist
 
 ## Wie benutze ich das?
 
